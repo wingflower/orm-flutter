@@ -70,7 +70,7 @@ class Game369 {
           playerWithMaxClap = players[i];
         }
       }
-      
+
       print("$player : $answer");
       print("clap: $clapCnt, rool: $roolCnt, ahh: $ahhCnt");
       print("Player1's clap count: $p1ClapCnt");
