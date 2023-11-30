@@ -12,7 +12,6 @@ class IPCheckerBase extends IPChecker{
   late List<String> octetListString;
   List<int> octetListInt = [];
   // List<int> octetListInt = castingList();
-  bool is4Octet = false;
 
   IPCheckerBase(super.ipAddr);
 
@@ -43,8 +42,7 @@ class IPCheckerBase extends IPChecker{
   @override
   bool checkIP() {
     // TODO: implement checkIP
-    is4Octet = checkOctet();
-    if (is4Octet) {
+    if (checkOctet()) {
       if (checkZero()) {
         return true;
       } else {
@@ -68,11 +66,6 @@ class IPCheckerBase extends IPChecker{
       return false;
     }
   }
-}
-
-
-class IPChecker0 extends IPCheckerBase{
-  IPChecker0(super.ipAddr);
 }
 
 
