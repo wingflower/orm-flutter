@@ -1,3 +1,1 @@
-class Cleric{
-
-}
+class Cleric{}
