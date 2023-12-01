@@ -1,6 +1,6 @@
 import 'dart:math';
 
-class Cleric{
+class Cleric {
   String name;
   int hp = 50;
   final int maxHp = 50;
