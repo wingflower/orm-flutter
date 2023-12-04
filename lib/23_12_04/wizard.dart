@@ -1,45 +1,34 @@
 import 'package:src/23_12_04/wand.dart';
 
-const int maxHp = 50;
-const int maxMp = 50;
+///
+/// 마법사의 이름은 null 일 수 없고, 반드시 3문자 이상이어야 한다.
+/// 마법사의 지팡이는 null 일 수 없다.
+/// 마법사의 MP는 0 이상이어야 한다.
+/// HP가 음수가 되는 상황에서는 대신 0이 설정 되도록 한다. (에러 아님)
+///
 
 class Wizard {
-  String _name;
+  final String name;
   int hp;
-  int _mp;
+  int? _mp;
   Wand wand;
 
-  String get name => _name;
-
-  set name(String value) {
-    if (value.length < 3) {
-      throw Exception('Wizard의 이름은 3자 이상입니다.');
-    }
-    _name = value;
-  }
-
-  int get mp => _mp;
-
-  set mp(int value) {
-    // if (mp < 0 && mp > maxMp) {
-    if (value < 0) {
-      // _mp = 0;
-      // return;
-      throw Exception('Wizard의 MP는 0 이상이어야 합니다.');
-    }
-    if (value > maxMp) {
-      // _mp = maxMp;
-      // return;
-      throw Exception('Wizard의 MP가 최대치를 초과하였습니다.');
-    }
-    _mp = value;
-  }
+  set mp(int mp) =>
+      _mp = mp < 0 ? throw Exception('wizard의 mp는 0보다 작을 수 없습니다.') : _mp = mp;
 
   Wizard({
-    this.hp = maxHp,
-    required this.wand,
-    required String name,
+    required this.name,
+    required this.hp,
     required int mp,
-  })  : _name = 3 <= name ? name : throw Exception('Wizard의 이름은 3자 이상입니다.'),
-        _mp = mp;
+    required this.wand,
+  }) {
+    if (name.length < 3) throw Exception('Wizard의 이름은 3글자 이상입니다.');
+    // if (wand == null) throw Exception('Wand가 없습니다.');
+    if (wand.runtimeType != Wand) throw Exception('Wand가 아닙니다.');
+    if (mp < 0) throw Exception('Wizard의 mp는 0보다 작을 수 없습니다.');
+    if (hp < 0) hp = 0;
+  }
+
+  String get info =>
+      'name: $name, hp/mp: $hp/$_mp, wand: ${wand!.name}/${wand!.power}';
 }
