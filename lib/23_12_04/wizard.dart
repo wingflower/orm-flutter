@@ -40,6 +40,6 @@ class Wizard {
     required this.wand,
     required String name,
     required int mp,
-  })  : _name = name,
+  })  : _name = 3 <= name ? name : throw Exception('Wizard의 이름은 3자 이상입니다.'),
         _mp = mp;
 }
