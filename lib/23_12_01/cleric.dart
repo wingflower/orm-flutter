@@ -1,14 +1,12 @@
 import 'dart:math';
 
-
+///
+/// 공통으로 참조될 값이므로 메모리를 절약하기 위해 static 선언
+///
+const int maxHp = 50;
+const int maxMp = 10;
 
 class Cleric {
-  ///
-  /// 공통으로 참조될 값이므로 메모리를 절약하기 위해 static 선언
-  ///
-  static const int maxHp = 50;
-  static const int maxMp = 10;
-
   String name;
   int hp;
   int mp;
