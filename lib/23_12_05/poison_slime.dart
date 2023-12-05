@@ -26,7 +26,7 @@ class PoisonSlime extends Slime {
 
   @override
   void attack(Hero hero) {
-    print('슬라임$suffix이/가 공격했다.');
+    print('독슬라임$suffix이/가 공격했다.');
     print('10의 데미지');
     hero.hp -= 10;
     if (poisonAttackCount > 0 && hero.hp > 0) {
