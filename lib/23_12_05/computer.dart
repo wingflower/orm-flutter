@@ -1,12 +1,12 @@
 import 'package:src/23_12_05/tangible_asset.dart';
 
-class Book extends TangibleAsset {
+class Computer extends TangibleAsset {
   String color;
-  String isbn;
+  String makerName;
 
-  Book({
+  Computer({
     required this.color,
-    required this.isbn,
+    required this.makerName,
     required super.name,
     required super.price,
   });
