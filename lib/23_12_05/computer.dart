@@ -13,5 +13,6 @@ class Computer extends TangibleAsset {
     required this.makerName,
     required super.name,
     required super.price,
+    required super.weight,
   });
 }

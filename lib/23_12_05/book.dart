@@ -13,5 +13,6 @@ class Book extends TangibleAsset {
     required this.isbn,
     required super.name,
     required super.price,
+    required super.weight,
   });
 }
