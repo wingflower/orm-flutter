@@ -1,3 +1,4 @@
+import 'package:src/23_12_05/hero.dart';
 import 'package:src/23_12_05/slime.dart';
 
 ///
@@ -22,4 +23,17 @@ class PoisonSlime extends Slime {
     super.suffix, {
     this.poisonAttackCount = defaultPoisonAttackCount,
   });
+
+  @override
+  void attack(Hero hero) {
+    print('슬라임$suffix이/가 공격했다.');
+    print('10의 데미지');
+    hero.hp -= 10;
+    if (poisonAttackCount > 0 && hero.hp > 0) {
+      print("추가로, 독 포자를 살포했다!");
+      hero.hp ?? hero.hp - (hero.hp / 5).toInt();
+      print("~포인트의 데미지");
+      poisonAttackCount -= 1;
+    }
+  }
 }
