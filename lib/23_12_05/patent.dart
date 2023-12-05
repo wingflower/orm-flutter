@@ -1,4 +1,4 @@
-import 'package:src/23_12_05/intangible_asset.dart';
+import 'intangible_asset.dart';
 
 ///
 /// 자산관리 프로그램의 무형 자산 [특허권]
