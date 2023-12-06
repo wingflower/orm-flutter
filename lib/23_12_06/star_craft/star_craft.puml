@@ -1,0 +1,83 @@
+@startuml
+
+' abstract는 extends만 가능하며, 멤버로 필드, 메소드, 프로퍼티를 가질 수 있다.
+' interface는 impl만 가능하며, 멤버로 메소드만 가질 수 있다.
+
+
+
+abstract Tribe {
+}
+
+class Groups {
+  List<Group> groups = <Group>[];
+  void addUnitToGroup({required Unit unit, required Group group}) {
+    if (group.units.length >= 12) return;
+  }
+
+
+class Group {
+  List<Unit> units = <Unit>[];
+}
+
+
+abstract class Terran extends Tribe {}
+
+abstract class Protoss extends Tribe {
+  Protoss({required int sheild}) : this._sheild = sheild;
+
+  int _sheild;
+
+' shield를 외부에서 접근하여 건드리게되면 setter body부분 통해서 autoShieldRecovery 실행
+  set shield(int damage) {}
+
+  void autoShieldRecovery() {}
+}
+
+abstract class Zerg extends Tribe implements Bionic {
+  void recovery() {}
+}
+
+interface Bionic {}
+
+interface Mechanic {}
+
+class SCV extends Terran implements Mechanic {
+  void getResource(Resource resource) {}
+  void repair(Mechanic target) {}
+}
+
+class Tank extends Terran implements Mechanic {}
+
+class Vulutre extends Terran implements Mechanic {}
+
+interface Unit {}
+
+interface Building {}
+
+class Marine extends Terran implements Bionic {}
+
+class Medic extends Terran implements Bionic, Unit {
+    '  if (bionic is Building) return;
+    void healForBionic(Bionic bionic) {}
+    void healForSCV(SCV scv) {}
+}
+
+class Zealot extends Protoss implements Unit, Bionic {
+  Zealot({required super.sheild});
+}
+class Dragun extends Protoss implements Unit, Mechanic {
+  Dragun({required super.sheild});
+}
+
+class exampleZergUnit extends Zerg implements Unit {}
+class exampleZergBuilding extends Zerg implements Building {}
+
+class exampleTerranBuilding extends Terran implements Building {}
+class exampleProtossBuilding extends Protoss implements Building {}
+
+
+
+abstract class Resource {}
+
+
+@enduml
