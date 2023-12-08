@@ -1,7 +1,7 @@
 class StrongBox<E> {
   E? _data;
-  KeyType keyType;
-  int tryCount = 0;
+  final KeyType keyType;
+  int _tryCount = 0;
 
   StrongBox({
     required this.keyType,
@@ -12,22 +12,22 @@ class StrongBox<E> {
   }
 
   Object? get() {
-    tryCount += 1;
+    _tryCount += 1;
     switch (keyType) {
       case KeyType.padlock:
-        if (tryCount == 1024) {
+        if (_tryCount == 1024) {
           return _data;
         }
       case KeyType.button:
-        if (tryCount == 10000) {
+        if (_tryCount == 10000) {
           return _data;
         }
       case KeyType.dial:
-        if (tryCount == 30000) {
+        if (_tryCount == 30000) {
           return _data;
         }
       case KeyType.finger:
-        if (tryCount == 1000000) {
+        if (_tryCount == 1000000) {
           return _data;
         }
     }
