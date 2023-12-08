@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 ///
 /// 제목과 출간일이 같으면 같은 책으로 판단한다. 또한 Set 에 넣으면 동일 객체로 판단한다.
 /// Book 인스턴스를 담고 있는 컬렉션에 대해 sort() 를 수행하여 출간일이 오래된 순서대로 정렬한다.
@@ -5,8 +7,10 @@
 ///
 
 class Book implements Comparable<Book> {
-  String title;
-  DateTime publishDate = DateTime.now();
+  final String title;
+
+  // DateTime publishDate = DateTime.now();
+  String publishDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
   String comment;
 
   Book({
@@ -31,7 +35,7 @@ class Book implements Comparable<Book> {
 
   Book copyWith({
     String? title,
-    DateTime? publishDate,
+    String? publishDate,
     String? comment,
   }) {
     return Book(

@@ -1,19 +1,25 @@
 import 'dart:io';
 
+import 'package:intl/intl.dart';
+
 import 'book.dart';
 
 void main() {
-  var datetime01 = DateTime.now();
-  sleep(Duration(seconds: 1));
-  var datetime02 = DateTime.now();
+  var datetime01 = DateFormat('yyyy-MM-dd').format(DateTime.now());
+  var datetime02 =
+      DateFormat('yyyy-MM-dd').format(DateTime.now().add(Duration(days: 1)));
   Book book001 = Book(title: 'flower01', publishDate: datetime02, comment: "1");
   Book book002 = Book(title: 'flower01', publishDate: datetime02, comment: "2");
-  sleep(Duration(seconds: 1));
-  Book book003 =
-      Book(title: 'flower01', publishDate: DateTime.now(), comment: "3");
-  sleep(Duration(seconds: 1));
-  Book book004 =
-      Book(title: 'flower02', publishDate: DateTime.now(), comment: "4");
+  Book book003 = Book(
+      title: 'flower01',
+      publishDate: DateFormat('yyyy-MM-dd')
+          .format(DateTime.now().add(Duration(days: 2))),
+      comment: "3");
+  Book book004 = Book(
+      title: 'flower02',
+      publishDate: DateFormat('yyyy-MM-dd')
+          .format(DateTime.now().add(Duration(days: 3))),
+      comment: "4");
   Book book005 = book004.copyWith();
   Book book006 = Book(title: 'flower03', publishDate: datetime01, comment: "5");
   Book book007 = book003;
