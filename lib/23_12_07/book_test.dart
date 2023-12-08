@@ -46,7 +46,7 @@ void main() {
   };
 
   // book005는 깊은 복사가 되어 set에서 중복 삭제가 되지 않는다.
-  // book007과 book008이 삭제된다.
+  // book002, book005, book007, book008이 삭제된다.
   print('bookList의 Book의 수는 [ ${bookList.length} ] 입니다.');
   print('bookSet의 Book의 수는 [ ${bookSet.length} ] 입니다.');
   bookSet.forEach(print);
