@@ -28,6 +28,9 @@ class Book implements Comparable<Book> {
           publishDate == other.publishDate;
 
   @override
+  int get hashCode => title.hashCode;
+
+  @override
   int compareTo(Book other) {
     // TODO: implement compareTo
     return publishDate.compareTo(other.publishDate);
