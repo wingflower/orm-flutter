@@ -10,7 +10,7 @@ class Book implements Comparable<Book> {
   final String title;
 
   // DateTime publishDate = DateTime.now();
-  String publishDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
+  DateTime publishDate = DateTime.now();
   String comment;
 
   Book({
@@ -25,10 +25,12 @@ class Book implements Comparable<Book> {
       other is Book &&
           runtimeType == other.runtimeType &&
           title == other.title &&
-          publishDate == other.publishDate;
+          DateFormat('yyyy-MM-dd').format(publishDate) ==
+              DateFormat('yyyy-MM-dd').format(other.publishDate);
 
   @override
-  int get hashCode => title.hashCode;
+  int get hashCode =>
+      title.hashCode ^ DateFormat('yyyy-MM-dd').format(publishDate).hashCode;
 
   @override
   int compareTo(Book other) {
@@ -38,7 +40,7 @@ class Book implements Comparable<Book> {
 
   Book copyWith({
     String? title,
-    String? publishDate,
+    DateTime? publishDate,
     String? comment,
   }) {
     return Book(

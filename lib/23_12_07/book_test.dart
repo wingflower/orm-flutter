@@ -1,24 +1,19 @@
-import 'dart:io';
-
 import 'package:intl/intl.dart';
 
 import 'book.dart';
 
 void main() {
-  var datetime01 = DateFormat('yyyy-MM-dd').format(DateTime.now());
-  var datetime02 =
-      DateFormat('yyyy-MM-dd').format(DateTime.now().add(Duration(days: 1)));
+  var datetime01 = DateTime.now();
+  var datetime02 = DateTime.now().add(Duration(days: 1));
   Book book001 = Book(title: 'flower01', publishDate: datetime02, comment: "1");
   Book book002 = Book(title: 'flower01', publishDate: datetime02, comment: "2");
   Book book003 = Book(
       title: 'flower01',
-      publishDate: DateFormat('yyyy-MM-dd')
-          .format(DateTime.now().add(Duration(days: 2))),
+      publishDate: DateTime.now().add(Duration(days: 2)),
       comment: "3");
   Book book004 = Book(
       title: 'flower02',
-      publishDate: DateFormat('yyyy-MM-dd')
-          .format(DateTime.now().add(Duration(days: 3))),
+      publishDate: DateTime.now().add(Duration(days: 3)),
       comment: "4");
   Book book005 = book004.copyWith();
   Book book006 = Book(title: 'flower03', publishDate: datetime01, comment: "5");
@@ -59,8 +54,10 @@ void main() {
   print('');
   // 출간일이 오래된 순서대로 정렬한다.
   print('정렬 전');
-  bookList.forEach((e) => print(e.publishDate));
+  bookList
+      .forEach((e) => print(DateFormat('yyyy-MM-dd').format(e.publishDate)));
   bookList.sort();
   print('정렬 후');
-  bookList.forEach((e) => print(e.publishDate));
+  bookList
+      .forEach((e) => print(DateFormat('yyyy-MM-dd').format(e.publishDate)));
 }
