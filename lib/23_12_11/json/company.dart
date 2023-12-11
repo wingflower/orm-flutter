@@ -8,19 +8,41 @@ import 'dart:io';
 
 class Employee {
   final String name;
+  final EmployeeRank rank;
   int age;
 
   Employee({
     required this.name,
     required this.age,
+    required this.rank,
   });
 
   Map<String, dynamic> toMap() {
-    return {"name": name, "age": age};
+    return {"name": name, "age": age, "rank": rank.name};
   }
 
   factory Employee.fromJson(Map<String, dynamic> map) {
-    return Employee(name: map['name'] as String, age: map['age'] as int);
+    return Employee(
+      name: map['name'],
+      age: map['age'],
+      rank: _getRank(map['rank']),
+    );
+  }
+
+  static EmployeeRank _getRank(String rank) {
+    switch (rank) {
+      case 'leader':
+        return EmployeeRank.leader;
+      case 'header':
+        return EmployeeRank.header;
+      case 'manager':
+        return EmployeeRank.manager;
+      case 'staff':
+        return EmployeeRank.staff;
+      case 'intern':
+        return EmployeeRank.intern;
+    }
+    return EmployeeRank.intern;
   }
 
   @override
@@ -37,7 +59,7 @@ class Department {
 
   factory Department.fromJson(Map<String, dynamic> map) {
     return Department(
-      name: map['name'] as String,
+      name: map['name'],
       leader: Employee.fromJson(map['leader']),
     );
   }
@@ -46,6 +68,13 @@ class Department {
     final sourceFile = File(jsonFile);
     sourceFile.writeAsStringSync(jsonEncode(toMap()));
   }
+
+  // Map<String, dynamic> toJson() {
+  //   return {
+  //     'name': name,
+  //     'leader': leader.toJson(),
+  //   };
+  // }
 
   Map<String, dynamic> toMap() {
     return {"name": name, "leader": leader.toMap()};
@@ -62,12 +91,12 @@ enum EmployeeRank { leader, header, manager, staff, intern }
 void main() {
   final path = '/Users/flower/flower/flutter/lecture/src/lib/23_12_11/json/';
 
-  Employee emp001 = Employee(name: "홍길동", age: 41);
-  Employee emp002 = Employee(name: "곽혜정", age: 25);
-  Employee emp003 = Employee(name: "안종준", age: 24);
-  Employee emp004 = Employee(name: "김다희", age: 23);
-  Employee emp005 = Employee(name: "길솔인", age: 22);
-  Employee emp006 = Employee(name: "곽동호", age: 21);
+  Employee emp001 = Employee(name: "홍길동", age: 41, rank: EmployeeRank.leader);
+  Employee emp002 = Employee(name: "곽혜정", age: 25, rank: EmployeeRank.header);
+  Employee emp003 = Employee(name: "안종준", age: 24, rank: EmployeeRank.leader);
+  Employee emp004 = Employee(name: "김다희", age: 23, rank: EmployeeRank.manager);
+  Employee emp005 = Employee(name: "길솔인", age: 22, rank: EmployeeRank.staff);
+  Employee emp006 = Employee(name: "곽동호", age: 21, rank: EmployeeRank.intern);
 
   Department department001 = Department(name: '총무부', leader: emp001);
   Department department002 = Department(name: 'B3', leader: emp003);
