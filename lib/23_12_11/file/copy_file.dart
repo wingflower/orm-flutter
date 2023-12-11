@@ -19,7 +19,8 @@ void copy(String source, String target01, String target02, String target03) {
 }
 
 void main() {
-  final path = '/Users/flower/flower/flutter/lecture/src/lib/23_12_11/file/';
+  // final path = '/Users/flower/flower/flutter/lecture/src/lib/23_12_11/file/';
+  final path = './src/lib/23_12_11/file/';
   copy('${path}source.txt', '${path}target01.txt', '${path}target02.txt',
       '${path}target03.txt');
 }
