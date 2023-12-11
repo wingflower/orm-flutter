@@ -5,13 +5,14 @@ import 'dart:io';
 /// 원본 파일을 대상 파일에 복사한다.
 ///
 
-void copy(String source, String target01, String target02) {
+void copy(String source, String target01, String target02, String target03) {
   // 파일 인스턴스의 매서드로 복사하기
   final sourceFile = File(source);
   sourceFile.copy(target01);
+  sourceFile.copySync(target02);
 
   // 파일을 읽고 복사하기.
-  final targetFile = File(target02);
+  final targetFile = File(target03);
   final contents = sourceFile.readAsStringSync();
   print(contents);
   targetFile.writeAsStringSync(contents);
@@ -19,5 +20,6 @@ void copy(String source, String target01, String target02) {
 
 void main() {
   final path = '/Users/flower/flower/flutter/lecture/src/lib/23_12_11/file/';
-  copy('${path}source.txt', '${path}target01.txt', '${path}target02.txt');
+  copy('${path}source.txt', '${path}target01.txt', '${path}target02.txt',
+      '${path}target03.txt');
 }
