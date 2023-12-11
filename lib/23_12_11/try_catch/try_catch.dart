@@ -1,7 +1,17 @@
+///
+/// 잘못된 자료형의 파싱으로 에러를 발생하고 있다.
+/// 에러를 처리하고 에러가 발생했을 경우에 0을 할당한다.
+///
+
 void main() {
   final numString = '10.5';
+  int num;
 
-  int num = int.parse(numString);
+  try {
+    num = int.parse(numString);
+  } catch (e) {
+    num = 0;
+  }
 
   print(num);
 }
