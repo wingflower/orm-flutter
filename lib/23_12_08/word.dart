@@ -8,7 +8,7 @@ class Word {
   String word = '';
 
   bool isVowel(int i) {
-    if (_vowelList.contains(word[i])) {
+    if (_vowelList.contains(word[i].toLowerCase())) {
       return true;
     }
     return false;
@@ -16,9 +16,6 @@ class Word {
   }
 
   bool isConsonant(int i) {
-    if (_vowelList.contains(word[i])) {
-      return false;
-    }
-    return true;
+    return !isVowel(i);
   }
 }
