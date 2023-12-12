@@ -109,7 +109,7 @@ void main() {
   // transactions.where((e) => e.trader.city == 'Cambridge').toList();
   // list006.forEach((e) => print(e.toString()));
   (transactions.where((e) => e.trader.city == 'Cambridge').toList())
-      .forEach((e) => print(e.toString()));
+      .forEach((e) => print(e));
 
   print('문제 7> 전체 트랜잭션 중 최대값은 얼마인가?');
   int list007 = transactions.map((e) => e.value).reduce(max);
