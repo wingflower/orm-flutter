@@ -4,3 +4,5 @@
 lib/23_12_11/file/target01.txt
 lib/23_12_11/file/target02.txt
 lib/23_12_11/json/company.txt
+*.png
+*.ico
